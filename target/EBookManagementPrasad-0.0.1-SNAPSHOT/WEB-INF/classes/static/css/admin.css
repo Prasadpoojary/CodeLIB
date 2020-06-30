@@ -1,0 +1,53 @@
+*
+{
+    padding:0px;
+    margin:0px;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.head
+{
+    text-align: center;
+    padding: 20px 0px;
+    color:#ddf2f8;
+    background:#012746;
+    display:flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.head h1
+{
+    font-weight: 500;
+}
+
+/* View Design */
+
+.view
+{
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.view h2
+{
+    color:#046a92
+}
+
+ul
+{
+    list-style: none;
+}
+  
+li
+{
+    margin:5px 20px;
+}
+li a
+{
+    color:#046a92;
+    font-weight: 700;
+    text-decoration: none;
+}
