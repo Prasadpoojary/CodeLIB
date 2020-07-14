@@ -12,10 +12,9 @@
 <link href='<spring:url value="/resources/css/courses.css"/>' rel="stylesheet" >
 <meta name="theme-color" content="#050136">
 <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.css">
-<link rel="stylesheet" href='<spring:url value="/resources/css/fontawesome/css/all.css"/>'>
 <script src='<spring:url value="/resources/js/jquery.js"/>'></script>
 <script src='<spring:url value="/resources/js/courses.js"/>'></script>
-<title>E-Books | courses</title>
+<title>CodeLIB | courses</title>
 </head>
 <body>
     <div class="loading">
@@ -34,7 +33,7 @@
     </div>
     <section class="head">
         <div class="title">
-            <h1>E-Courses Collection<i class="fa fa-feather-alt"></i></h1>
+            <h1><i  class="fa fa-laptop-code" style="font-size:19px;"></i>Code<span style="color:#0fff07;letter-spacing: 2px;">LIB</span></h1>
         </div>
         <div class="menuBar">
             <button class="menuToggle"><i class="fa fa-bars"></i></button>

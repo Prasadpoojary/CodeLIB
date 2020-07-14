@@ -9,7 +9,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="theme-color" content="#ffffff">
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.css">
-    <link href='<spring:url value="/resources/css/fontawesome/css/all.css"/>' rel="stylesheet" >
     <link href='<spring:url value="/resources/css/forgetStyle.css"/>' rel="stylesheet" >
     <title>Forget Password</title>
 </head>

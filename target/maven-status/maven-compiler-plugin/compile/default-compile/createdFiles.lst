@@ -1,4 +1,5 @@
 net\ebookPrasad\model\Book.class
+net\ebookPrasad\service\PrasadService$1.class
 net\ebookPrasad\config\WebSecurityConfig.class
 net\ebookPrasad\model\Course.class
 net\ebookPrasad\model\User.class

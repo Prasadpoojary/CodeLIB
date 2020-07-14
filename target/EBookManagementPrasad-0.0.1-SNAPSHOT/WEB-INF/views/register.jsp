@@ -8,13 +8,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="theme-color" content="#000000">
-    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.css">
-
+<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.css">
 <link href='<spring:url value="/resources/css/register.css"/>' rel="stylesheet" >
-<link rel="stylesheet" href='<spring:url value="/resources/css/fontawesome/css/all.css"/>'>
 <script src='<spring:url value="/resources/js/jquery.js"/>'></script>
 <script src='<spring:url value="/resources/js/register.js"/>'></script>
-<title>E-Books | Register</title>
+<title>CodeLIB | Register</title>
 </head>
 <body>
     <div class="loading">

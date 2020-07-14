@@ -24,26 +24,26 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-			<dependency>
+				 <dependency>
 	        <groupId>test</groupId>
 	        <artifactId>activation</artifactId>
 	        <version>1.0</version>
 	        <scope>system</scope>
-	        <systemPath>${basedir}/lib/activation.jar</systemPath>
+	        <systemPath>${basedir}/src/main/resources/lib/activation.jar</systemPath>
    		</dependency>
    		<dependency>
 	        <groupId>test</groupId>
 	        <artifactId>mail</artifactId>
 	        <version>1.0</version>
 	        <scope>system</scope>
-	        <systemPath>${basedir}/lib/mail.jar</systemPath>
+	        <systemPath>${basedir}/src/main/resources/lib/mail.jar</systemPath>
    		</dependency>
    		<dependency>
 	        <groupId>test</groupId>
 	        <artifactId>techsoftemail</artifactId>
 	        <version>1.0</version>
 	        <scope>system</scope>
-	        <systemPath>${basedir}/lib/techsoftemail.jar</systemPath>
+	        <systemPath>${basedir}/src/main/resources/lib/techsoftemail.jar</systemPath>
    		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -107,9 +107,10 @@
 		    <scope>runtime</scope>
 		</dependency>
 		<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-mail</artifactId>
-        </dependency>
+		<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.5.5</version>
+		</dependency>
         
 	</dependencies>
 
@@ -119,7 +120,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<finalName>ebook-collection</finalName>
+					<finalName>codelib</finalName>
 				</configuration>
 			</plugin>
 		</plugins>

@@ -10,12 +10,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="theme-color" content="#050136">
-    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.css">
+<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.css">
 <link href='<spring:url value="/resources/css/upload.css"/>' rel="stylesheet" >
-<link rel="stylesheet" href='<spring:url value="/resources/css/fontawesome/css/all.css"/>'>
 <script src='<spring:url value="/resources/js/jquery.js"/>'></script>
 <script src='<spring:url value="/resources/js/upload.js"/>'></script>
-<title>E-Books | upload</title>
+<title>CodeLIB | upload</title>
 </head>
 <body>
 <div class="loading">
@@ -34,7 +33,7 @@
 </div>
 <section class="head">
     <div class="title">
-        <h1>E-Books Collection<i class="fa fa-feather-alt"></i></h1>
+        <h1><i  class="fa fa-laptop-code" style="font-size:19px;"></i>Code<span style="color:#0fff07;letter-spacing: 2px;">LIB</span></h1>
     </div>
     <div class="menuBar">
         <button class="menuToggle"><i class="fa fa-bars"></i></button>
@@ -72,7 +71,7 @@
      <c:when test="${upBooks.size() == 0 && upCourses.size() == 0}">
     <div class="emptyCont">
         <div class="eiCross">
-            <p>+</p>
+            <i class="fa fa-times" style="color:#dfdfdf;font-size:42px;padding:15px 23px;border-radius: 50%;border:3px solid #dfdfdf;"></i>
         </div>
         <p class="eiMain">No uploads Found</p>
         <p class="eiSub">You can upload some E-Books and Free Online courses Google Drive URL or any other sources URL</p>
@@ -149,7 +148,7 @@
             </div>
              <div class="inpDiv">
                 <input type="text" name="source" required>
-                <label for="">Source (eg: Udemy, Google Drive)</label>
+                <label for="">Source e.g: Udemy</label>
             </div>
             <div class="inpDiv">
                 <input type="url" name="url" required>

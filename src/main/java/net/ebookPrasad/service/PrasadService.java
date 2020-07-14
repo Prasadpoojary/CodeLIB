@@ -5,7 +5,16 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Optional;
+import java.util.Properties;
 
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
@@ -23,7 +32,6 @@ import net.ebookPrasad.dau.UserRepository;
 import net.ebookPrasad.model.Book;
 import net.ebookPrasad.model.Course;
 import net.ebookPrasad.model.User;
-import com.email.durgesh.Email;
 
 @Service
 public class PrasadService {
@@ -84,7 +92,31 @@ public class PrasadService {
 	}
 	
 	
+	public Iterable<String> getAllCategory()
+	{
+		ArrayList<String> resultIterable = new ArrayList<String>();
+		Iterable<Book> booksIterable=bookRepository.findAll();
+		for(Book book : booksIterable)
+		{
+			resultIterable.add(book.getCategory());
+		}
+		return resultIterable;
+	}
 	
+	public Iterable<String> getAllCourseCategory()
+	{
+		ArrayList<String> resultIterable = new ArrayList<String>();
+		Iterable<Course> coursesIterable=courseRepository.findAll();
+		for(Course course : coursesIterable)
+		{
+			resultIterable.add(course.getCategory());
+		}
+		return resultIterable;
+	}
+	
+	
+	
+	//////////////////////////////////////////////////////////////////////////////////
 	
 	
 	
@@ -111,7 +143,7 @@ public class PrasadService {
 		{
 			Boolean user=auth.isAuthenticated();
 			Iterable<Book> books=bookRepository.findAll();
-			Iterable<String> categories=bookRepository.getAllCategory();
+			Iterable<String> categories=getAllCategory();
 			ArrayList<String> checkecategory =new ArrayList<String>();
 			for(String category : categories)
 			{
@@ -125,12 +157,13 @@ public class PrasadService {
 			mv.addObject("categories", checkecategory);
 			mv.addObject("isAuthenticated", user);
 			return mv;
+			
 		}
 		else 
 		{
 			Boolean user=false;
 			Iterable<Book> books=bookRepository.findAll();
-			Iterable<String> categories=bookRepository.getAllCategory();
+			Iterable<String> categories=getAllCategory();
 			ArrayList<String> checkecategory =new ArrayList<String>();
 			for(String category : categories)
 			{
@@ -157,7 +190,7 @@ public class PrasadService {
 		{
 			Boolean user=auth.isAuthenticated();
 			Iterable<Course> courses=courseRepository.findAll();
-			Iterable<String> categories=courseRepository.getAllCategory();
+			Iterable<String> categories=getAllCourseCategory();
 			ArrayList<String> checkecategory =new ArrayList<String>();
 			for(String category : categories)
 			{
@@ -175,7 +208,7 @@ public class PrasadService {
 		{
 			Boolean user=false;
 			Iterable<Course> courses=courseRepository.findAll();
-			Iterable<String> categories=courseRepository.getAllCategory();
+			Iterable<String> categories=getAllCourseCategory();
 			ArrayList<String> checkecategory =new ArrayList<String>();
 			for(String category : categories)
 			{
@@ -386,7 +419,7 @@ public class PrasadService {
 				if(auth != null)
 				{
 					Boolean user=auth.isAuthenticated();
-					Iterable<String> categories=bookRepository.getAllCategory();
+					Iterable<String> categories=getAllCategory();
 					ArrayList<String> checkecategory =new ArrayList<String>();
 					for(String cat: categories)
 					{
@@ -415,7 +448,7 @@ public class PrasadService {
 				else 
 				{
 					Boolean user=false;
-					Iterable<String> categories=bookRepository.getAllCategory();
+					Iterable<String> categories=getAllCategory();
 					ArrayList<String> checkecategory =new ArrayList<String>();
 					for(String cat: categories)
 					{
@@ -449,7 +482,7 @@ public class PrasadService {
 				if(auth != null)
 				{
 					Boolean user=auth.isAuthenticated();
-					Iterable<String> categories=courseRepository.getAllCategory();
+					Iterable<String> categories=getAllCourseCategory();
 					ArrayList<String> checkecategory =new ArrayList<String>();
 					for(String cat: categories)
 					{
@@ -478,7 +511,7 @@ public class PrasadService {
 				else 
 				{
 					Boolean user=false;
-					Iterable<String> categories= courseRepository.getAllCategory();
+					Iterable<String> categories= getAllCourseCategory();
 					ArrayList<String> checkecategory =new ArrayList<String>();
 					for(String cat: categories)
 					{
@@ -570,7 +603,7 @@ public class PrasadService {
 				if(auth != null)
 				{
 					Boolean user=auth.isAuthenticated();
-					Iterable<String> categories= bookRepository.getAllCategory();
+					Iterable<String> categories= getAllCategory();
 					ArrayList<String> checkecategory =new ArrayList<String>();
 					for(String cat: categories)
 					{
@@ -600,7 +633,7 @@ public class PrasadService {
 				else 
 				{
 					Boolean user=false;
-					Iterable<String> categories= bookRepository.getAllCategory();
+					Iterable<String> categories= getAllCategory();
 					ArrayList<String> checkecategory =new ArrayList<String>();
 					for(String cat: categories)
 					{
@@ -680,7 +713,7 @@ public class PrasadService {
 				if(auth != null)
 				{
 					Boolean user=auth.isAuthenticated();
-					Iterable<String> categories= courseRepository.getAllCategory();
+					Iterable<String> categories= getAllCourseCategory();
 					ArrayList<String> checkecategory =new ArrayList<String>();
 					for(String cat: categories)
 					{
@@ -710,7 +743,7 @@ public class PrasadService {
 				else 
 				{
 					Boolean user=false;
-					Iterable<String> categories= courseRepository.getAllCategory();
+					Iterable<String> categories=getAllCourseCategory();
 					ArrayList<String> checkecategory =new ArrayList<String>();
 					for(String cat: categories)
 					{
@@ -765,19 +798,54 @@ public class PrasadService {
 	private void sendmail(String email, User user) throws Exception
 	{
 		
+		SendMail(email,user);
+		
+	}
+	
+	private void SendMail(String recepient, User user) throws MessagingException 
+	{
+		
+		Properties properties = new Properties();
+		properties.put("mail.smtp.auth","true");
+		properties.put("mail.smtp.starttls.enable","true");
+		properties.put("mail.smtp.host","smtp.gmail.com");
+		properties.put("mail.smtp.port","587");
+		
+		String musername="codelibgcs@gmail.com";
+		String mpassword="Prasad815@";
+		
+		Session session = Session.getInstance(properties,new Authenticator()
+				{
+					@Override 
+					protected PasswordAuthentication getPasswordAuthentication() 
+					{
+						return new PasswordAuthentication(musername, mpassword);
+					}
+				});
+		
+		Message message = prepareMessage(session,musername,recepient,user);
+		
+		Transport.send(message);
+
+	}
+
+	private Message prepareMessage(Session session, String musername, String recepient, User user) 
+	{
 		try 
 		{
-			Email sendmail = new Email("ebookandcoursemanagement@gmail.com", "Prasad815@");
-			sendmail.setFrom("ebookandcoursemanagement@gmail.com", "E-books Collection");
-			sendmail.setSubject("Your Password");
-			sendmail.setContent("<p>Your password is "+user.getfPass()+"</p>", "text/html");
-			sendmail.addRecipient(email);
-			sendmail.send();
-		} catch (Exception e) 
-		{
-			e.printStackTrace();
+			Message message= new MimeMessage(session);
+			message.setFrom(new InternetAddress(musername));
+			message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
+			message.setSubject("Password From CodeLIB");
+			String htmlCode="<p>Your Password is <b>"+user.getfPass()+"</b></p><br/><h3>-Thank You</h3>";
+			message.setContent(htmlCode, "text/html");
+			return message;
+		} 
+		catch (Exception e) {
+			// TODO: handle exception
+			return null;
 		}
-		
+	
 	}
 
 	public ModelAndView viewbook(Long id,Authentication auth) 

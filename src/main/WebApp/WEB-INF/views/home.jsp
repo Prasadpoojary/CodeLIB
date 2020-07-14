@@ -9,12 +9,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="theme-color" content="#050136">
-    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.css">
+<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.css">
 <link href='<spring:url value="/resources/css/home.css"/>' rel="stylesheet" >
-<link rel="stylesheet" href='<spring:url value="/resources/css/fontawesome/css/all.css"/>'>
 <script src='<spring:url value="/resources/js/jquery.js"/>'></script>
 <script src='<spring:url value="/resources/js/home.js"/>'></script>
-<title>E-Books | home</title>
+<title>CodeLIB | home</title>
 </head>
 <body>
 <div class="loading">
@@ -33,7 +32,7 @@
 </div>
 <section class="head">
     <div class="title">
-        <h1>E-Books Collection<i class="fa fa-feather-alt"></i></h1>
+        <h1><i  class="fa fa-laptop-code" style="font-size:19px;"></i>Code<span style="color:#0fff07;letter-spacing: 2px;">LIB</span></h1>
     </div>
     <div class="menuBar">
         <button class="menuToggle"><i class="fa fa-bars"></i></button>
